@@ -15,19 +15,19 @@ logger = logging.getLogger(__name__)
 class Database:
     """Класс для работы с SQLite базой данных"""
     
-            def __init__(self, db_path: str = "/data/bot_users.db"):
-                
-    
-     """Инициализация базы данных"""
+                def __init__(self, db_path: str = "bot_users.db"):
+        """Инициализация базы данных"""
         self.db_path = db_path
-    
+
     def init_db(self):
         """Создание таблицы пользователей"""
+        # Создаем папку, если она указана в пути
+        Path(self.db_path).parent.mkdir(parents=True, exist_ok=True)
+        
         try:
             conn = sqlite3.connect(self.db_path)
             cursor = conn.cursor()
             
-            # Создаем таблицу пользователей
             cursor.execute("""
                 CREATE TABLE IF NOT EXISTS users (
                     user_id INTEGER PRIMARY KEY,
