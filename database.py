@@ -15,7 +15,8 @@ logger = logging.getLogger(__name__)
 class Database:
     """Класс для работы с SQLite базой данных"""
     
-        def __init__(self, db_path: str = "bot_users.db"):
+            def __init__(self, db_path: str = "/data/bot_users.db"):
+                
     
      """Инициализация базы данных"""
         self.db_path = db_path
